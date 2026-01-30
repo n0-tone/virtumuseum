@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VirtuMuseum</title>
+    <link rel="icon" href="src/assets/images/b.png" type="image/png" />
+
+    <!-- Suppress noisy vendor console output (A-Frame/THREE banners, legacy lights warning).
+         To re-enable temporarily: add ?console=1 to the URL or set localStorage.virtumuseum.console=1 -->
+    <script>
+      (function () {
+        try {
+          const allowViaQuery =
+            typeof location !== "undefined" &&
+            new URLSearchParams(location.search).has("console");
+          const allowViaStorage =
+            localStorage.getItem("virtumuseum.console") === "1";
+          if (allowViaQuery || allowViaStorage) return;
+
+          const patterns = [
+            /A-Frame Version/i,
+            /THREE Version/i,
+            /WebVR Polyfill Version/i,
+            /THREE\.WebGLRenderer: The property \.useLegacyLights has been deprecated/i,
+          ];
+
+          const shouldSuppress = (args) => {
+            try {
+              const text = args
+                .map((a) => (typeof a === "string" ? a : ""))
+                .join(" ");
+              return patterns.some((re) => re.test(text));
+            } catch {
+              return false;
+            }
+          };
+
+          const origLog = console.log.bind(console);
+          const origInfo = (console.info || console.log).bind(console);
+          const origWarn = console.warn.bind(console);
+
+          console.log = (...args) => {
+            if (shouldSuppress(args)) return;
+            origLog(...args);
+          };
+          console.info = (...args) => {
+            if (shouldSuppress(args)) return;
+            origInfo(...args);
+          };
+          console.warn = (...args) => {
+            if (shouldSuppress(args)) return;
+            origWarn(...args);
+          };
+        } catch {
+          // noop
+        }
+      })();
+    </script>
+
+    <script
+      src="https://aframe.io/releases/1.5.0/aframe.min.js"
+      crossorigin="anonymous"
+      data-cfasync="false"
+    ></script>
+    <link rel="modulepreload" href="src/js/app.js" crossorigin="anonymous" />
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+
+  <body>
+    <!-- Welcome / Onboarding -->
+    <div class="welcome" id="welcome">
+      <div class="welcome__card">
+        <div class="welcome__brand">VirtuMuseum</div>
+        <div class="welcome__title">Welcome to VirtuMuseum</div>
+        <div class="welcome__subtitle">
+          Choose how you want to start. You can explore freely (WASD + mouse) or
+          take a <b>manual</b> guided tour using the arrow keys to go at your
+          own pace.
+        </div>
+
+        <div class="welcome__buttons">
+          <button id="btnEnterExplore">Explore freely</button>
+          <button id="btnEnterTour" class="secondary">Guided tour</button>
+          <button id="btnFullscreenWelcome" class="secondary">
+            Fullscreen
+          </button>
+        </div>
+
+        <div class="welcome__opts">
+          <label class="ui__row">
+            <input type="checkbox" id="chkWelcomeAmbient" />
+            <span>Ambient music</span>
+          </label>
+          <!--   <label class="ui__row">
+            <input type="checkbox" id="chkWelcomeTTS" />
+            <span>Voice narration (TTS)</span>
+          </label> -->
+          <label class="ui__row ui__row--split">
+            <span>Movement speed</span>
+            <input
+              id="rngMoveSpeed"
+              type="range"
+              min="1"
+              max="6"
+              step="0.5"
+              value="2"
+            />
+          </label>
+        </div>
+
+        <div class="welcome__hint">
+          Tip: <b>M</b> opens the menu · <b>H</b> HUD on/off · <b>Q</b>/<b>E</b>
+          prev/next · guided tour: use ←/→ (or Q/E)
+        </div>
+      </div>
+    </div>
+
+    <div class="ui is-hidden" id="uiRoot">
+      <div class="ui__bar">
+        <button id="btnMenu" class="secondary" title="Menu (M)">Menu</button>
+        <button id="btnStop" class="secondary" title="End guided tour (Esc)">
+          End tour
+        </button>
+        <button id="btnHUD" class="secondary" title="HUD on/off (H)">
+          HUD
+        </button>
+        <button id="btnFullscreen" class="secondary">Fullscreen</button>
+      </div>
+
+      <div class="ui__backdrop" id="menuBackdrop" aria-hidden="true"></div>
+
+      <div class="ui__panel" id="menuPanel" aria-hidden="true">
+        <div class="ui__panelHeader">
+          <div class="ui__title">VirtuMuseum</div>
+          <div class="ui__subtitle">Interactive Virtual Museum</div>
+        </div>
+
+        <div class="ui__section">
+          <div class="ui__buttons">
+            <button id="btnBackToWelcome" class="secondary">
+              Back to start screen
+            </button>
+          </div>
+        </div>
+
+        <div class="ui__section">
+          <div class="ui__sectionTitle">
+            Sound
+            <!-- & Narration -->
+          </div>
+          <label class="ui__row">
+            <input type="checkbox" id="chkAmbient" />
+            <span>Ambient music (calm)</span>
+          </label>
+          <!--   <label class="ui__row">
+            <input type="checkbox" id="chkTTS" />
+            <span>Voice narration (TTS)</span>
+          </label> -->
+          <label class="ui__row ui__row--split">
+            <span>Volume</span>
+            <input id="rngVolume" type="range" min="0" max="100" value="60" />
+          </label>
+        </div>
+
+        <div class="ui__section">
+          <div class="ui__sectionTitle">Experience</div>
+          <label class="ui__row">
+            <input type="checkbox" id="chkReducedMotion" />
+            <span>Reduce motion (transitions)</span>
+          </label>
+          <label class="ui__row ui__row--split">
+            <span>Tour speed</span>
+            <input id="rngSpeed" type="range" min="50" max="150" value="100" />
+          </label>
+          <label class="ui__row ui__row--split">
+            <span>Zoom</span>
+            <input
+              id="rngZoom"
+              type="range"
+              min="30"
+              max="90"
+              step="1"
+              value="80"
+            />
+          </label>
+          <label class="ui__row ui__row--split">
+            <span>Movement speed</span>
+            <input
+              id="rngMoveSpeedMenu"
+              type="range"
+              min="1"
+              max="6"
+              step="0.5"
+              value="2"
+            />
+          </label>
+        </div>
+
+        <!--    <div class="ui__section"> -->
+        <!--  <div class="ui__sectionTitle">Modo 360</div>
+          <div class="ui__buttons">
+            <button id="btnModeMuseum" class="secondary">3D Museum</button>
+            <button id="btnModePano" class="secondary">Panorama 360</button>
+            <button id="btnModeVideo" class="secondary">360 Video</button> -->
+        <!--  </div> -->
+        <!--   <label class="ui__row ui__row--stack">
+            <span>URL panorama (jpg/png)</span>
+            <input
+              id="txtPanoUrl"
+              placeholder="ex: src/assets/images/panorama.jpg"
+            />
+          </label> -->
+        <!--   <label class="ui__row ui__row--stack">
+            <span>360 video URL (mp4)</span>
+            <input
+              id="txtVideoUrl"
+              placeholder="ex: src/assets/video/video360.mp4"
+            />
+          </label>
+          <div class="ui__buttons">
+            <button id="btnApply360" class="secondary">Apply</button>
+          </div>
+        </div>
+ -->
+        <div class="ui__section ui__section--stops" id="stopsSection">
+          <div class="ui__sectionTitle">Teleports (stops)</div>
+          <div id="stopsList" class="ui__list"></div>
+        </div>
+
+        <div class="ui__section">
+          <div class="ui__sectionTitle">Voice (commands)</div>
+          <div class="ui__buttons">
+            <button id="btnVoice" class="secondary">Enable voice</button>
+            <button id="btnHelp" class="secondary">Help</button>
+          </div>
+          <div class="ui__hint" id="voiceStatus">Voice: off</div>
+        </div>
+
+        <div class="ui__section">
+          <div class="ui__sectionTitle">Tools</div>
+          <div class="ui__buttons">
+            <button id="btnPhoto" class="secondary" title="Photo (C)">
+              Photo
+            </button>
+            <button id="btnFlashlight" class="secondary" title="Flashlight (F)">
+              Flashlight
+            </button>
+            <!--   <button
+              id="btnReset"
+              class="secondary"
+              title="Reset position/rotation"
+            >
+              Reset
+            </button> -->
+            <!--   <button
+              id="btnCopyPose"
+              class="secondary"
+              title="Copy current position/rotation"
+            >
+              Copy pose
+            </button> -->
+          </div>
+          <div class="ui__hint">
+            Extra: <b>Q</b>/<b>E</b> prev/next · <b>C</b> photo · <b>F</b>
+            flashlight
+          </div>
+        </div>
+
+        <div class="ui__section ui__section--foot">
+          <div class="ui__hint">
+            Shortcuts: <b>M</b> menu · <b>Enter</b> start ·
+            <!--  <b>Space</b> pausa/retoma · -->
+            <b>N</b> next · <b>Esc</b> stop
+          </div>
+        </div>
+      </div>
+
+      <div class="tourNav is-hidden" id="tourNav" aria-hidden="true">
+        <button
+          id="btnTourPrev"
+          class="secondary ui__tourBtn"
+          title="Previous (←)"
+        >
+          ←
+        </button>
+        <button id="btnTourNext" class="secondary ui__tourBtn" title="Next (→)">
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Joystick (mobile) — only shown in free exploration -->
+    <div class="joystick is-hidden" id="mobileJoystick" aria-hidden="true">
+      <div class="joystick__base" id="mobileJoystickBase">
+        <div class="joystick__stick" id="mobileJoystickStick"></div>
+      </div>
+    </div>
+
+    <!-- Info card (HTML) -->
+    <div
+      class="infoCard is-hidden"
+      id="infoCard"
+      role="dialog"
+      aria-live="polite"
+    >
+      <div class="infoCard__top">
+        <div class="infoCard__title" id="infoCardTitle">—</div>
+        <div class="infoCard__actions">
+          <button
+            class="infoCard__action secondary"
+            id="btnInfoImgToggle"
+            title="Show/hide image"
+          >
+            Image
+          </button>
+          <button
+            class="infoCard__action secondary"
+            id="btnInfoToggle"
+            title="Show/hide panel"
+          >
+            Hide
+          </button>
+          <button
+            class="infoCard__close secondary"
+            id="btnInfoClose"
+            title="Close"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <img class="infoCard__img is-hidden" id="infoCardImg" alt="" />
+      <div class="infoCard__desc" id="infoCardDesc"></div>
+      <div class="infoCard__hint" id="infoCardHint">
+        Tip: use ← / → to navigate the tour.
+      </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div
+      class="modal is-hidden"
+      id="helpModal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="helpModalTitle"
+    >
+      <div class="modal__backdrop" id="helpModalBackdrop"></div>
+
+      <div class="modal__card" role="document">
+        <div class="modal__header">
+          <div class="modal__title" id="helpModalTitle">Help</div>
+          <button
+            class="secondary modal__close"
+            id="btnHelpModalClose"
+            type="button"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal__body" id="helpModalBody"></div>
+
+        <div class="modal__footer">
+          <button class="secondary" id="btnHelpModalOk" type="button">
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <a-scene
+      keyboard-shortcuts="enterVR: false"
+      vr-mode-ui="enabled: false"
+      renderer="colorManagement: true; physicallyCorrectLights: true; antialias: true"
+      background="color: #0b0b0f"
+      fog="type: exponential; density: 0.015; color: #0b0b0f"
+      shadow="type: pcfsoft"
+    >
+      <a-assets>
+        <!-- Model -->
+        <!-- museu.glb -->
+        <a-asset-item
+          id="museuGLB"
+          src="src/assets/models/branco.glb"
+        ></a-asset-item>
+
+        <!-- 360 media (optional) -->
+        <img id="panoImg" src="" />
+        <video
+          id="video360"
+          src=""
+          crossorigin="anonymous"
+          playsinline
+          webkit-playsinline
+        ></video>
+      </a-assets>
+
+      <!-- Lights -->
+      <a-entity
+        light="type: ambient; intensity: 0.85; color: #ffffff"
+      ></a-entity>
+      <a-entity
+        light="type: directional; intensity: 1.0; castShadow: true"
+        position="2 6 3"
+      ></a-entity>
+      <a-entity
+        light="type: directional; intensity: 0.55; castShadow: true"
+        position="-2 5 -3"
+      ></a-entity>
+
+      <!-- Museum model (adjust scale/rotation/position) -->
+      <a-entity
+        id="museuModel"
+        gltf-model="#museuGLB"
+        gltf-material-fix="doubleSided: true; baseColor: #d9d9df; roughness: 1.0; metalness: 0.0"
+        position="0 0 0"
+        rotation="0 0 0"
+        scale="0.01 0.01 0.01"
+      ></a-entity>
+
+      <!-- Invisible “floor” for click-to-teleport (comfort) -->
+      <a-plane
+        id="teleportFloor"
+        class="teleportable"
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="220"
+        height="220"
+        material="color: #000000; opacity: 0.0; transparent: true"
+      ></a-plane>
+
+      <!-- 360 mode: sky / videosphere (initially hidden) -->
+      <!--    <a-sky id="sky360" visible="false" color="#101018"></a-sky>
+      <a-videosphere
+        id="videoSphere"
+        visible="false"
+        src="#video360"
+      ></a-videosphere> -->
+
+      <!-- Hotspots (IDs are used as targets) -->
+
+      <!-- RIG: moves during tour and manual movement -->
+      <a-entity
+        id="rig"
+        position="0.00 0.00 4.00"
+        wasd-controls="acceleration: 2; enabled: false; fly: false"
+        bounds-keeper="minX: -60; maxX: 60; minZ: -80; maxZ: 80; y: 0"
+        print-aim
+      >
+        <a-camera
+          id="cam"
+          position="0 1.6 0"
+          look-controls="enabled: true"
+          wasd-controls="enabled: false"
+        >
+          <a-cursor
+            raycaster="objects: .hotspot, .teleportable, .quadroHitbox"
+            fuse="false"
+          ></a-cursor>
+
+          <!-- Flashlight (toggle in menu / key F) -->
+          <a-entity
+            id="flashlight"
+            light="type: spot; angle: 22; penumbra: 0.2; intensity: 0.0; distance: 18; color: #ffffff"
+            position="0 0 0"
+          ></a-entity>
+
+          <!-- Info panel attached to the camera -->
+          <a-entity id="infoPanel" visible="false" position="0 -0.22 -1.85">
+            <a-plane
+              width="2.2"
+              height="0.9"
+              color="#0f0f14"
+              material="opacity: 0.88"
+            ></a-plane>
+
+            <a-entity
+              id="infoText"
+              position="0 0.23 0.01"
+              text="value: ; width: 2.0; color: #FFFFFF; wrapCount: 32; lineHeight: 52; align: center; anchor: center;"
+            ></a-entity>
+
+            <a-entity
+              id="hintText"
+              position="0 -0.28 0.01"
+              text="value: (click a hotspot for details); width: 2.0; color: #B7B7C7; wrapCount: 32; lineHeight: 52; align: center; anchor: center;"
+            ></a-entity>
+          </a-entity>
+
+          <a-entity id="narrator"></a-entity>
+        </a-camera>
+      </a-entity>
+
+      <!-- Tour controller -->
+      <a-entity
+        id="tour"
+        tour-guide="rig: #rig; panel: #infoPanel; text: #infoText; narrator: #narrator; stopsUrl: src/data/tourStops.json; speed: 1.0; autoAdvance: false"
+      ></a-entity>
+
+      <!-- Paintings + hitboxes (from PLANE_### in the GLB) -->
+      <script>
+        const museuEl = document.querySelector("#museuModel");
+
+        function pad3(n) {
+          return String(n).padStart(3, "0");
+        }
+
+        // small fixed offset to avoid z-fighting with the wall
+        const DEFAULT_OFFSET = -0.03;
+
+        // per-painting offsets (negative values push into the wall)
+        const quadroOffsets = {
+          "001": -0.7,
+          "002": -0.25,
+          "003": -0.7,
+          "004": -0.25,
+          "005": -0.25,
+          "006": -0.25,
+          "007": -0.25,
+          "008": -0.7,
+          "009": -0.25,
+          "010": -0.25,
+          "011": -0.7,
+          "012": -0.67,
+          "013": -0.67,
+          "014": -0.67,
+          "015": -0.67,
+          "016": -0.67,
+          "017": -0.67,
+          "018": -0.66,
+          "019": -0.2,
+          "020": -0.66,
+          "021": -0.2,
+          "022": -0.2,
+          "023": -0.2,
+          "024": -0.2,
+          "025": -0.67,
+          "026": -0.2,
+          "027": -0.2,
+          "028": -0.67,
+          "029": -0.67,
+          "030": -0.67,
+          "031": -0.67,
+        };
+
+        museuEl.addEventListener("model-loaded", () => {
+          const root = museuEl.getObject3D("mesh");
+          if (!root) return;
+
+          for (let i = 1; i <= 31; i++) {
+            const code = pad3(i);
+            const planeName = `PLANE_${code}`;
+
+            const marker = root.getObjectByName(planeName);
+            if (!marker) {
+              continue;
+            }
+
+            // --- marker world transform
+            const pos = new THREE.Vector3();
+            const quat = new THREE.Quaternion();
+            const sca = new THREE.Vector3();
+            marker.updateWorldMatrix(true, false);
+            marker.matrixWorld.decompose(pos, quat, sca);
+
+            // --- size from geometry
+            let width = 1.2;
+            let height = 0.8;
+
+            if (marker.geometry) {
+              marker.geometry.computeBoundingBox();
+              const bb = marker.geometry.boundingBox;
+              const sizeLocal = new THREE.Vector3();
+              bb.getSize(sizeLocal);
+
+              const worldScale = new THREE.Vector3();
+              marker.getWorldScale(worldScale);
+
+              width = sizeLocal.x * worldScale.x;
+              height = sizeLocal.y * worldScale.y;
+
+              if (width <= 0.0001) width = 1.2;
+              if (height <= 0.0001) height = 0.8;
+            }
+
+            // hide GLB marker
+            marker.visible = false;
+
+            // --- wall normal
+            const normal = new THREE.Vector3(0, 0, 1)
+              .applyQuaternion(quat)
+              .normalize();
+
+            const offset = quadroOffsets[code] ?? DEFAULT_OFFSET;
+
+            // ===============================
+            // VISIBLE PAINTING
+            // ===============================
+            const quadro = document.createElement("a-plane");
+            quadro.setAttribute("id", `quadro_${code}`);
+            quadro.setAttribute("width", width);
+            quadro.setAttribute("height", height);
+            quadro.setAttribute(
+              "material",
+              `
+        src: url(src/assets/images/test/${code}.jpg);
+        side: double;
+        roughness: 1;
+        metalness: 0;
+        `,
+            );
+
+            quadro.object3D.position.copy(pos);
+            quadro.object3D.quaternion.copy(quat);
+            quadro.object3D.position.add(normal.clone().multiplyScalar(offset));
+
+            museuEl.sceneEl.appendChild(quadro);
+
+            // ===============================
+            // INVISIBLE HITBOX
+            // ===============================
+            const hit = document.createElement("a-plane");
+            hit.classList.add("quadroHitbox");
+            hit.setAttribute("data-art", code);
+            hit.setAttribute("width", width + 0.08);
+            hit.setAttribute("height", height + 0.08);
+            hit.setAttribute(
+              "material",
+              "transparent:true; opacity:0; side: double",
+            );
+
+            hit.object3D.position.copy(pos);
+            hit.object3D.quaternion.copy(quat);
+            hit.object3D.position.add(normal.clone().multiplyScalar(offset));
+
+            hit.addEventListener("click", (e) => {
+              // prevent the click from "passing through" to other targets
+              e.stopPropagation?.();
+              e.preventDefault?.();
+
+              // open painting info
+              window.VirtuMuseum?.openPaintingInfoByCode?.(code);
+            });
+
+            museuEl.sceneEl.appendChild(hit);
+          }
+        });
+      </script>
+
+      <!-- O teu JS -->
+      <script
+        type="module"
+        src="src/js/app.js"
+        crossorigin="anonymous"
+        data-cfasync="false"
+      ></script>
+    </a-scene>
+  </body>
+</html>

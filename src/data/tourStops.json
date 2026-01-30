@@ -1,0 +1,298 @@
+[
+  {
+    "pos": "-0.02 0.00 -0.15",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 800,
+    "lookDur": 500,
+    "wait": 900,
+    "title": "Start",
+    "desc": "Starting point of the tour."
+  },
+
+  {
+    "pos": "7.70 0.00 -6.5",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 1",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "5.30 0.00 -6.5",
+    "rot": "15.30 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 2",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "2.60 0.00 -6.5",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 3",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-0.40 0.00 -6.5",
+    "rot": "0.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 200,
+    "title": "Painting 4",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-0.40 0.00 -6.5",
+    "rot": "15.30 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 200,
+    "title": "Painting 5",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-2.80 0.00 -6.5",
+    "rot": "15.30 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 6",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-2.80 0.00 -6.5",
+    "rot": "0.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 7",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-6.00 0.00 -6.5",
+    "rot": "6.19 -1.03 0.00",
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 8",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-9.00 0.00 -6.5",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 9",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-11.20 0.00 -6.5",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 10",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-14.30 0.00 -6.5",
+    "rot": "6.19 -1.03 0.00",
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 11",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-14.30 0.00 -6.51",
+    "rot": "9.40 88.58 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 12",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-14.30 0.00 -2.51",
+    "rot": "23.71 85.60 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 13",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-14.30 0.00 -2.51",
+    "rot": "-6.30 87.09 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 14",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-15.80 0.00 1.8",
+    "rot": "12.03 89.15 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 15",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-15.90 0.00 4.0",
+    "rot": "12.03 89.15 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 16",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-15.90 0.00 7.2",
+    "rot": "12.03 89.15 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 17",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-14.20 0.00 7.5",
+    "rot": "9.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 18",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-11.2 0.00 7.5",
+    "rot": "9.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 19",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-9.0 0.00 7.5",
+    "rot": "9.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 20",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-6.30 0.00 7.5",
+    "rot": "9.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 21",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-2.80 0.00 7.5",
+    "rot": "4.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 22",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-2.80 0.00 7.5",
+    "rot": "17.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 23",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-1.5 0.00 7.5",
+    "rot": "17.63 179.75 0",
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 24",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-1.50 0.00 7.5",
+    "rot": "4.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 25",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "2.65 0.00 7.5",
+    "rot": "9.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 26",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "5.30 0.00 7.5",
+    "rot": "17.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 27",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "8.00 0.00 7.5",
+    "rot": "9.63 179.75 0",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 28",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "6.8 0.00 3.8",
+    "rot": "6.19 -1.03 0.00",
+
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 29",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-2.8 0.00 3.8",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 30",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-13. 0.00 3.8",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1400,
+    "lookDur": 600,
+    "wait": 900,
+    "title": "Painting 31",
+    "desc": "Painting description (edit here)."
+  },
+  {
+    "pos": "-0.02 0.00 -0.15",
+    "rot": "6.19 -1.03 0.00",
+    "moveDur": 1600,
+    "lookDur": 500,
+    "wait": 1200,
+    "title": "End",
+    "desc": "The tour has ended. You can explore freely."
+  }
+]

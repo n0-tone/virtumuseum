@@ -1,0 +1,349 @@
+{
+  "paintings": [
+    {
+      "code": "001",
+      "title": "The Night Watch",
+      "author": "Rembrandt",
+      "year": "1642",
+      "materials": "Oil on canvas",
+      "description": "One of Rembrandt's most famous works, depicting Amsterdam's civic militia.",
+      "history": "Painted in 1642, it is renowned for its dramatic use of light and shadow.",
+      "symbolism": "Symbolizes vigilance and civic duty.",
+      "type": "Baroque"
+    },
+    {
+      "code": "002",
+      "title": "The Rape of the Sabine Women",
+      "author": "Nicolas Poussin",
+      "year": "1637",
+      "materials": "Oil on canvas",
+      "description": "Depicts the legendary episode of the abduction of the Sabine women by the Romans.",
+      "history": "Painted in 1637, it explores classical themes and a carefully balanced composition.",
+      "symbolism": "Reflects on the founding of Rome and conflicts between cultures.",
+      "type": "Baroque"
+    },
+    {
+      "code": "003",
+      "title": "Judith Slaying Holofernes",
+      "author": "Artemisia Gentileschi",
+      "year": "1614–20",
+      "materials": "Oil on canvas",
+      "description": "An intense depiction of the moment Judith beheads Holofernes.",
+      "history": "Gentileschi painted several versions of this subject, emphasizing female strength.",
+      "symbolism": "Symbolizes justice and courage in the face of oppression.",
+      "type": "Baroque"
+    },
+    {
+      "code": "004",
+      "title": "Las Meninas",
+      "author": "Diego Velázquez",
+      "year": "1656",
+      "materials": "Oil on canvas",
+      "description": "A complex court scene that challenges the viewer's perceptions.",
+      "history": "Painted in 1656, it is one of the most analyzed works in Western art history.",
+      "symbolism": "Explores themes of reality and illusion in art.",
+      "type": "Baroque"
+    },
+    {
+      "code": "005",
+      "title": "The Calling of Saint Matthew",
+      "author": "Caravaggio",
+      "year": "1599–1600",
+      "materials": "Oil on canvas",
+      "description": "Shows the moment Jesus calls Matthew to follow him.",
+      "history": "One of Caravaggio's masterpieces, noted for its dramatic use of light.",
+      "symbolism": "Represents divine calling and spiritual transformation.",
+      "type": "Baroque"
+    },
+    {
+      "code": "006",
+      "title": "Saint Jerome in Meditation",
+      "author": "Caravaggio",
+      "year": "1605",
+      "materials": "Oil on canvas",
+      "description": "Depicts Saint Jerome in a moment of contemplation.",
+      "history": "Painted in 1605, it exemplifies Caravaggio's tenebrist style.",
+      "symbolism": "Symbolizes penitence and the search for wisdom.",
+      "type": "Baroque"
+    },
+    {
+      "code": "007",
+      "title": "The Triumph of Bacchus",
+      "author": "Diego Velázquez",
+      "year": "1628–1629",
+      "materials": "Oil on canvas",
+      "description": "Shows the god Bacchus crowning a soldier with a vine wreath.",
+      "history": "Also known as 'The Drunkards', it was painted by Velázquez early in his career.",
+      "symbolism": "Explores the duality between the divine and the worldly.",
+      "type": "Baroque"
+    },
+    {
+      "code": "008",
+      "title": "The Ecstasy of Saint Teresa",
+      "author": "Gian Lorenzo Bernini",
+      "year": "1647–1652",
+      "materials": "Marble sculpture",
+      "description": "A sculpture that captures Saint Teresa's mystical moment.",
+      "history": "Created by Bernini, it is a masterpiece of Baroque sculpture.",
+      "symbolism": "Represents spiritual union with the divine.",
+      "type": "Baroque"
+    },
+    {
+      "code": "009",
+      "title": "Susanna and the Elders",
+      "author": "Rembrandt",
+      "year": "1647",
+      "materials": "Oil on canvas",
+      "description": "Depicts the biblical story of Susanna being watched by elders.",
+      "history": "Painted by Rembrandt, it highlights vulnerability and injustice.",
+      "symbolism": "Symbolizes chastity and the injustice faced by women.",
+      "type": "Baroque"
+    },
+    {
+      "code": "010",
+      "title": "Belshazzar's Feast",
+      "author": "Rembrandt",
+      "year": "1635",
+      "materials": "Oil on canvas",
+      "description": "Shows King Belshazzar during a banquet interrupted by a divine message.",
+      "history": "Rembrandt captured the king's moment of shock and terror.",
+      "symbolism": "Reflects on pride and divine judgment.",
+      "type": "Baroque"
+    },
+
+    {
+      "code": "011",
+      "title": "Liberty Leading the People",
+      "author": "Eugène Delacroix",
+      "year": "1830",
+      "materials": "Oil on canvas",
+      "description": "One of the most iconic Romantic works, showing Liberty personified leading the French people in revolution.",
+      "history": "Painted in 1830, it became an icon of the French Revolution and the struggle for freedom.",
+      "symbolism": "Liberty is depicted as a female figure guiding the revolutionaries to victory.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "012",
+      "title": "The Raft of the Medusa",
+      "author": "Théodore Géricault",
+      "year": "1819",
+      "materials": "Oil on canvas",
+      "description": "Depicts the dramatic wreck of a French ship, with survivors fighting for their lives on an improvised raft.",
+      "history": "Painted in 1819, it is considered one of the most important works of Romanticism, known for its realistic and emotional portrayal.",
+      "symbolism": "The scene shows despair and the struggle for survival, reflecting human tragedy.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "013",
+      "title": "The Nightmare",
+      "author": "Henry Fuseli",
+      "year": "1781",
+      "materials": "Oil on canvas",
+      "description": "A surreal depiction of a nightmare, with a woman lying down as a demon watches over her.",
+      "history": "Painted in 1781, it was one of the first works to explore nightmares and the unconscious.",
+      "symbolism": "Symbolizes inner fears and the dark forces of the human unconscious.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "014",
+      "title": "The Sea of Ice",
+      "author": "Caspar David Friedrich",
+      "year": "1824",
+      "materials": "Oil on canvas",
+      "description": "Shows a journey through a frozen, desolate landscape typical of Friedrich's Romantic scenes.",
+      "history": "Painted in 1824, it exemplifies Friedrich's unique style focused on vast landscapes and feelings of solitude.",
+      "symbolism": "Represents humanity's struggle against nature, and the search for meaning in a vast, mysterious world.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "015",
+      "title": "Wanderer above the Sea of Fog",
+      "author": "Caspar David Friedrich",
+      "year": "1818",
+      "materials": "Oil on canvas",
+      "description": "Shows a man on a cliff looking out over a mist-covered landscape, capturing nature's sublime beauty.",
+      "history": "Created in 1818, it is one of Friedrich's most famous works and symbolizes the relationship between humans and nature.",
+      "symbolism": "The wanderer symbolizes humanity's spiritual quest, and nature as a vast, unknowable mystery.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "016",
+      "title": "The Death of Sardanapalus",
+      "author": "Eugène Delacroix",
+      "year": "1827",
+      "materials": "Oil on canvas",
+      "description": "Depicts the death of the Assyrian king Sardanapalus, who orders the destruction of everything around him before being captured.",
+      "history": "Painted in 1827, it showcases Delacroix's ability to portray violence and intense emotion.",
+      "symbolism": "Symbolizes the decay of an empire and despair in the face of an inevitable end.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "017",
+      "title": "Monk by the Sea",
+      "author": "Caspar David Friedrich",
+      "year": "1808–1810",
+      "materials": "Oil on canvas",
+      "description": "A solitary monk gazing at the vast sea, a theme common in many of Friedrich's works.",
+      "history": "Created between 1808 and 1810, it conveys feelings of solitude and introspection.",
+      "symbolism": "Represents spiritual contemplation and inner searching through observing nature.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "018",
+      "title": "Snow Storm",
+      "author": "J.M.W. Turner",
+      "year": "1842",
+      "materials": "Oil on canvas",
+      "description": "Depicts a ship battling a fierce snow storm, an example of Turner's mastery of nature's forces.",
+      "history": "Painted in 1842, it demonstrates Turner's talent for capturing nature's destructive power.",
+      "symbolism": "The storm symbolizes nature's uncontrollable forces and human vulnerability.",
+      "type": "Romanticism"
+    },
+    {
+      "code": "019",
+      "title": "Rain, Steam and Speed",
+      "author": "J.M.W. Turner",
+      "year": "1844",
+      "materials": "Oil on canvas",
+      "description": "Shows a steam train crossing a bridge, symbolizing progress and the Industrial Revolution.",
+      "history": "Painted in 1844, it is among Turner's most representative works, focused on the dynamism of modernity.",
+      "symbolism": "Symbolizes the rise of industry and the impact of the Industrial Revolution on society.",
+      "type": "Romanticism"
+    },
+
+    {
+      "code": "020",
+      "title": "The Acrobats",
+      "author": "Gustave Doré",
+      "year": "1874",
+      "materials": "Oil on canvas",
+      "description": "Depicts a group of street performers putting on a show, capturing the energy and vitality of the moment.",
+      "history": "Painted in 1874, Doré explored themes of marginalized figures and bohemian street life.",
+      "symbolism": "Represents freedom of expression and life on society's margins.",
+      "type": "Romanticism"
+    },
+
+    {
+      "code": "021",
+      "title": "Les Demoiselles d'Avignon",
+      "author": "Pablo Picasso",
+      "year": "1907",
+      "materials": "Oil on canvas",
+      "description": "One of the earliest Cubist works, depicting five nude women with geometric forms and sharp angles.",
+      "history": "Painted in 1907, it is a milestone in the development of Cubism, challenging traditional art conventions.",
+      "symbolism": "The deconstruction of human forms represents a new approach to perceiving reality.",
+      "type": "Cubism"
+    },
+    {
+      "code": "022",
+      "title": "Guernica",
+      "author": "Pablo Picasso",
+      "year": "1937",
+      "materials": "Oil on canvas",
+      "description": "A monumental painting depicting the bombing of the Basque town of Guernica during the Spanish Civil War.",
+      "history": "Created in 1937 in response to the aerial attack on Guernica, it became a powerful symbol against violence and war.",
+      "symbolism": "Pain, chaos, and the destruction of war are expressed through distorted, fragmented figures.",
+      "type": "Cubism"
+    },
+    {
+      "code": "023",
+      "title": "The Bottle of Wine",
+      "author": "Juan Gris",
+      "year": "1913",
+      "materials": "Oil on canvas",
+      "description": "A Cubist work depicting a wine bottle in a geometric, analytical manner.",
+      "history": "Painted in 1913, it is a classic example of Synthetic Cubism, focused on everyday subject matter.",
+      "symbolism": "The fragmentation of form reflects Gris's search for a broken-down, analytical representation of reality.",
+      "type": "Cubism"
+    },
+    {
+      "code": "024",
+      "title": "Violin and Candlestick",
+      "author": "Georges Braque",
+      "year": "1910",
+      "materials": "Oil on canvas",
+      "description": "A Cubist work that deconstructs the form of a violin and a candlestick, representing everyday objects in an abstract way.",
+      "history": "Created in 1910, it is among the early works of Analytical Cubism, focused on breaking down form.",
+      "symbolism": "The fragmentation of objects reflects the idea of depicting reality from multiple perspectives.",
+      "type": "Cubism"
+    },
+    {
+      "code": "025",
+      "title": "Woman with a Mandolin",
+      "author": "Georges Braque",
+      "year": "1910",
+      "materials": "Oil on canvas",
+      "description": "A female figure playing a mandolin, rendered in geometric forms characteristic of Cubism.",
+      "history": "Painted in 1910, it explores the deconstruction of the human figure and the integration of music and visual art.",
+      "symbolism": "The figure and instrument are presented abstractly, symbolizing the fusion of art and sound.",
+      "type": "Cubism"
+    },
+    {
+      "code": "026",
+      "title": "Portrait of Pablo Picasso",
+      "author": "Juan Gris",
+      "year": "1912",
+      "materials": "Oil on canvas",
+      "description": "A Cubist portrait of Pablo Picasso using geometric forms and a restrained color palette.",
+      "history": "Painted in 1912, it is one of the best-known examples of Synthetic Cubism developed by Gris.",
+      "symbolism": "Portraying Picasso through fragmented forms and multiple perspectives reflects the artist's multifaceted character.",
+      "type": "Cubism"
+    },
+    {
+      "code": "027",
+      "title": "The Poet",
+      "author": "Pablo Picasso",
+      "year": "1911",
+      "materials": "Oil on canvas",
+      "description": "A Cubist work portraying a poet, with fragmented elements and multiple perspectives on the face and surrounding objects.",
+      "history": "Created in 1911, it reflects the use of geometric forms and the attempt to represent the subject in a non-linear way.",
+      "symbolism": "The fusion of the poet with the surrounding environment symbolizes the intimate relationship between the artist and the work.",
+      "type": "Cubism"
+    },
+    {
+      "code": "028",
+      "title": "The Reader",
+      "author": "Fernand Léger",
+      "year": "1924",
+      "materials": "Oil on canvas",
+      "description": "A portrait of a man reading, with simplified forms and vivid colors characteristic of Léger's style.",
+      "history": "Painted in 1924, it explores bold forms and contrasting colors, moving away from more analytical Cubism.",
+      "symbolism": "The emphasis on simple forms and vibrant color symbolizes the search for new artistic expression.",
+      "type": "Cubism"
+    },
+    {
+      "code": "029",
+      "title": "Still Life with Chair Caning",
+      "author": "Pablo Picasso",
+      "year": "1912",
+      "materials": "Oil on canvas",
+      "description": "One of the first Cubist works to combine collage with painting, depicting chair caning and other objects.",
+      "history": "Created in 1912, it marks the transition from Analytical Cubism to Synthetic Cubism through the use of collage elements.",
+      "symbolism": "Combining three-dimensional and two-dimensional elements symbolizes an attempt to bring art closer to physical reality.",
+      "type": "Cubism"
+    },
+    {
+      "code": "030",
+      "title": "The City",
+      "author": "Fernand Léger",
+      "year": "1919",
+      "materials": "Oil on canvas",
+      "description": "A Cubist work portraying urban life and modernity, with geometric forms and a palette of primary colors.",
+      "history": "Painted in 1919, it reflects the impact of modern, industrial life on post-war art.",
+      "symbolism": "Geometric forms and primary colors symbolize the rationalization and mechanization of urban life.",
+      "type": "Cubism"
+    },
+
+    {
+      "code": "031",
+      "title": "Impression, Sunrise",
+      "author": "Claude Monet",
+      "year": "1872",
+      "materials": "Oil on canvas",
+      "description": "Famous for giving the Impressionist movement its name, it depicts sunrise in the harbor of Le Havre.",
+      "history": "Painted in 1872, it was initially criticized but later became a landmark in a revolution in painting that rejected traditional styles.",
+      "symbolism": "Quick brushstrokes and vibrant color reflect the fleeting nature of light and atmosphere.",
+      "type": "Impressionism"
+    }
+  ]
+}
